@@ -211,14 +211,20 @@ call s:h("DiffChange",    {"fg": s:yellow})
 " __DiffText__
 call s:h("DiffText",      {"fg": s:constant})
 
+" __Proper__ (proper nouns)
+call s:h("Proper",       {"fg": s:norm, "gui": "italic"})
+
+" __Todo__ (TODO, etc)
+call s:h("Todo",       {"fg": s:norm, "gui": "italic"})
+
 if has("gui_running")
   call s:h("SpellBad",    {"gui": "underline", "sp": s:red})
-  call s:h("SpellCap",    {"gui": "underline", "sp": s:ok})
+  call s:h("SpellCap",    {"gui": "underline", "sp": s:warning}) "set ALE highlights to yellow
   call s:h("SpellRare",   {"gui": "underline", "sp": s:error})
   call s:h("SpellLocal",  {"gui": "underline", "sp": s:ok})
 else
   call s:h("SpellBad",    {"cterm": "underline", "fg": s:red})
-  call s:h("SpellCap",    {"cterm": "underline", "fg": s:ok})
+  call s:h("SpellCap",    {"cterm": "underline", "fg": s:warning}) "set ALE highlights to yellow
   call s:h("SpellRare",   {"cterm": "underline", "fg": s:error})
   call s:h("SpellLocal",  {"cterm": "underline", "fg": s:ok})
 endif
@@ -310,3 +316,9 @@ hi def link rubyDefine Statement
 hi def link rubyInclude Statement
 hi def link rubyMacro Statement
 hi def link rubyKeyword Statement
+" hi def link rubyClassName Proper
+" hi def link rubyModuleName Proper
+" hi def link rubyConstant Proper
+
+" Override TODO/NOTE/FIXME/etc
+hi! link Todo Todo
