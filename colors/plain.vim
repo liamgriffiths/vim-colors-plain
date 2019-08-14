@@ -302,3 +302,11 @@ hi link markdownHeadingDelimiter Constant
 
 hi link yamlBlockMappingKey Statement
 hi link pythonOperator Statement
+
+" Ruby (vim-ruby)
+hi def link rubyModule Statement
+hi def link rubyClass Statement
+hi def link rubyDefine Statement
+hi def link rubyInclude Statement
+hi def link rubyMacro Statement
+hi def link rubyKeyword Statement
