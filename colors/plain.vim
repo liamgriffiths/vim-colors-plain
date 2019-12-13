@@ -29,18 +29,18 @@ let s:subtle_black    = { "gui": "#303030", "cterm": "236" }
 let s:light_gray      = { "gui": "#999999", "cterm": "249" }
 let s:lighter_gray    = { "gui": "#CCCCCC", "cterm": "251" }
 let s:lightest_gray   = { "gui": "#E5E5E5", "cterm": "251" }
-let s:dark_red        = { "gui": "#C30771", "cterm": "1"   }
-let s:light_red       = { "gui": "#E32791", "cterm": "1"   }
-let s:dark_blue       = { "gui": "#008EC4", "cterm": "4"   }
-let s:light_blue      = { "gui": "#B6D6FD", "cterm": "153" }
-let s:dark_cyan       = { "gui": "#20A5BA", "cterm": "6"   }
-let s:light_cyan      = { "gui": "#4FB8CC", "cterm": "14"  }
-let s:dark_green      = { "gui": "#10A778", "cterm": "2"   }
-let s:light_green     = { "gui": "#5FD7A7", "cterm": "10"  }
-let s:dark_purple     = { "gui": "#523C79", "cterm": "5"   }
-let s:light_purple    = { "gui": "#6855DE", "cterm": "13"  }
-let s:light_yellow    = { "gui": "#F3E430", "cterm": "11"  }
-let s:dark_yellow     = { "gui": "#A89C14", "cterm": "3"   }
+let s:dark_red        = { "gui": "#c70000", "cterm": "1"   }
+let s:light_red       = { "gui": "#ffbac8", "cterm": "1"   }
+let s:dark_blue       = { "gui": "#0084c6", "cterm": "4"   }
+let s:light_blue      = { "gui": "#90dcff", "cterm": "153" }
+let s:dark_cyan       = { "gui": "#4b8878", "cterm": "6"   }
+let s:light_cyan      = { "gui": "#69d1ca", "cterm": "14"  }
+let s:dark_green      = { "gui": "#236925", "cterm": "2"   }
+let s:light_green     = { "gui": "#3db540", "cterm": "10"  }
+let s:dark_purple     = { "gui": "#7d0068", "cterm": "5"   }
+let s:light_purple    = { "gui": "#bb3b80", "cterm": "13"  }
+let s:light_yellow    = { "gui": "#FFE500", "cterm": "11"  }
+let s:dark_yellow     = { "gui": "#ffbb50", "cterm": "3"   }
 
 if &background == "dark"
   let s:bg               = s:black
@@ -78,6 +78,7 @@ else
   let s:visual           = s:light_blue
   let s:cursor_line      = s:lightest_gray
   let s:constant         = s:dark_blue
+  let s:datatype             = s:dark_cyan "trying it out...
   let s:comment          = s:light_gray
   let s:selection        = s:light_yellow
   let s:selection_fg     = s:light_black
@@ -157,6 +158,10 @@ hi! link SignColumn       LineNr
 " __Comment__
 call s:h("Comment",       {"fg": s:comment, "gui": "italic"})
 
+
+" __DataType__ (I made this up)
+call s:h("DataType",      {"fg": s:datatype})
+
 " __Constant__
 call s:h("Constant",      {"fg": s:constant})
 hi! link Character        Constant
@@ -219,12 +224,12 @@ call s:h("Todo",       {"fg": s:norm, "gui": "italic"})
 
 if has("gui_running")
   call s:h("SpellBad",    {"gui": "underline", "sp": s:red})
-  call s:h("SpellCap",    {"gui": "underline", "sp": s:warning}) "set ALE highlights to yellow
+  call s:h("SpellCap",    {"gui": "underline", "bg": s:warning}) "set ALE highlights to yellow
   call s:h("SpellRare",   {"gui": "underline", "sp": s:error})
   call s:h("SpellLocal",  {"gui": "underline", "sp": s:ok})
 else
   call s:h("SpellBad",    {"cterm": "underline", "fg": s:red})
-  call s:h("SpellCap",    {"cterm": "underline", "fg": s:warning}) "set ALE highlights to yellow
+  call s:h("SpellCap",    {"cterm": "underline", "bg": s:warning}) "set ALE highlights to yellow
   call s:h("SpellRare",   {"cterm": "underline", "fg": s:error})
   call s:h("SpellLocal",  {"cterm": "underline", "fg": s:ok})
 endif
@@ -322,3 +327,17 @@ hi def link rubyKeyword Statement
 
 " Override TODO/NOTE/FIXME/etc
 hi! link Todo Todo
+
+" Haskell (haskell-vim)
+hi def link haskellWhere Statement
+hi def link haskellLet Statement
+hi def link haskellDerive Statement
+hi def link haskellDeclKeyword Statement
+hi def link haskellDecl Statement
+hi def link haskellDefault Statement
+hi def link haskellImportKeywords Statement
+hi def link haskellForeignKeywords Statement
+hi def link haskellConditional Statement
+" hi def link haskellOperators Statement
+" hi def link haskellType DataType
+
